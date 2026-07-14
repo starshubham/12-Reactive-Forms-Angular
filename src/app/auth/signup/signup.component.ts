@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
@@ -24,6 +24,7 @@ export class SignupComponent {
     
     firstName: new FormControl('', {validators: [Validators.required] }),
     lastName: new FormControl('', {validators: [Validators.required] }),
+    // Working with Nested Form Groups
     address: new FormGroup({
       street: new FormControl('', {validators: [Validators.required] }),
       number: new FormControl('', {validators: [Validators.required] }),
@@ -34,6 +35,11 @@ export class SignupComponent {
     role: new FormControl<
       'student' | 'teacher' | 'employee' | 'founder' | 'other'
       >('student', {validators: [Validators.required] }),
+    source: new FormArray([
+      new FormControl(false),
+      new FormControl(false),
+      new FormControl(false),
+    ]),
     agree: new FormControl(false, {validators: [Validators.required] }),
   })
 
